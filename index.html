@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Milionerzy: Droga do Mistrza Ubrań</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="stage" aria-labelledby="game-title">
+      <header class="topbar">
+        <div>
+          <h1 id="game-title">Milionerzy</h1>
+          <p class="game-subtitle">Droga do Mistrza Ubrań</p>
+        </div>
+        <div class="status-card" aria-label="Status gry">
+          <span id="level-label">Poziom: łatwy</span>
+          <strong id="score-label">0 pkt</strong>
+        </div>
+      </header>
+
+      <div class="progress-wrap" aria-label="Postęp pytań">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+
+      <section class="question-panel">
+        <div id="setup-panel" class="setup-panel">
+          <h2>Wpisz graczy</h2>
+          <p>Najlepiej pracujcie w parach. Wpiszcie imiona i numery z dziennika.</p>
+          <div class="student-grid">
+            <label>
+              <span>Osoba 1 - imię</span>
+              <input id="student-one-name" type="text" autocomplete="off" placeholder="np. Ola">
+            </label>
+            <label>
+              <span>Nr</span>
+              <input id="student-one-number" type="number" min="1" max="99" inputmode="numeric" placeholder="12">
+            </label>
+            <label>
+              <span>Osoba 2 - imię</span>
+              <input id="student-two-name" type="text" autocomplete="off" placeholder="np. Kuba">
+            </label>
+            <label>
+              <span>Nr</span>
+              <input id="student-two-number" type="number" min="1" max="99" inputmode="numeric" placeholder="18">
+            </label>
+          </div>
+          <button id="start-game-btn" class="primary" type="button">Rozpocznij grę</button>
+        </div>
+        <div class="question-meta">
+          <span id="question-number">Pytanie 1 z 30</span>
+          <span id="question-points">Za 1 punkt</span>
+        </div>
+        <div id="question-visual" class="question-visual" aria-hidden="true"></div>
+        <h2 id="question-text">Kliknij start, aby rozpocząć grę.</h2>
+        <div id="answers" class="answers" aria-live="polite"></div>
+      </section>
+
+      <section class="controls" aria-label="Koła ratunkowe i akcje">
+        <button id="fifty-btn" class="lifeline" type="button">
+          <span>50:50</span>
+          <small>pół na pół</small>
+        </button>
+        <button id="teacher-btn" class="lifeline" type="button">
+          <span>?</span>
+          <small>zapytaj nauczyciela</small>
+        </button>
+        <button id="next-btn" class="primary" type="button">Start</button>
+      </section>
+
+      <p id="feedback" class="feedback" role="status"></p>
+    </section>
+
+    <aside class="side-panel" aria-label="Tabela poziomów">
+      <div class="badge-board">
+        <div class="badge easy">Łatwy<br><strong>1 pkt</strong></div>
+        <div class="badge medium">Średni<br><strong>2 pkt</strong></div>
+        <div class="badge hard">Trudny<br><strong>3 pkt</strong></div>
+      </div>
+
+      <div class="rank-box">
+        <h2>Punkty możliwe do zdobycia</h2>
+        <dl>
+          <div><dt>50-60 pkt</dt><dd>Mistrzowie</dd></div>
+          <div><dt>35-49 pkt</dt><dd>Eksperci</dd></div>
+          <div><dt>20-34 pkt</dt><dd>Znawcy</dd></div>
+          <div><dt>0-19 pkt</dt><dd>Uczestnicy</dd></div>
+        </dl>
+      </div>
+
+      <div class="rules">
+        <h2>Zasady</h2>
+        <p>Każdy tablet uruchamia własną grę. Liczy się pierwsza wybrana odpowiedź.</p>
+        <p>Każde koło ratunkowe można wykorzystać tylko raz w całej grze.</p>
+      </div>
+
+      <div class="qr-box">
+        <h2>Kod QR dla tabletów</h2>
+        <label for="qr-url">Link do gry</label>
+        <input id="qr-url" type="url" placeholder="https://...">
+        <button id="qr-btn" class="secondary" type="button">Utwórz kod QR</button>
+        <div class="qr-frame">
+          <img id="qr-image" alt="Kod QR do gry">
+        </div>
+        <p id="qr-note">Jeśli plik jest otwarty z dysku, wpisz tu link po opublikowaniu gry.</p>
+      </div>
+
+      <div class="results-box">
+        <h2>Zestawienie</h2>
+        <div id="results-list" class="results-list"></div>
+        <button id="copy-results-btn" class="secondary" type="button">Kopiuj CSV</button>
+        <button id="clear-results-btn" class="secondary danger" type="button">Wyczyść</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
