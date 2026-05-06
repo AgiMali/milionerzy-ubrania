@@ -467,7 +467,7 @@ function clearResults() {
 }
 
 function startGame() {
-  state.players = [
+  const players = [
     {
       name: studentOneName.value.trim(),
       number: studentOneNumber.value.trim()
@@ -477,6 +477,23 @@ function startGame() {
       number: studentTwoNumber.value.trim()
     }
   ];
+
+  const activePlayers = players.filter((player) => player.name || player.number);
+  const numbers = activePlayers
+    .map((player) => player.number)
+    .filter(Boolean);
+
+  if (!activePlayers.length) {
+    feedback.textContent = "Wpisz dane przynajmniej jednej osoby.";
+    return;
+  }
+
+  if (numbers.length !== new Set(numbers).size) {
+    feedback.textContent = "Numery w dzienniku nie mogą się powtarzać.";
+    return;
+  }
+
+  state.players = players;
 
   restartGame();
 }
